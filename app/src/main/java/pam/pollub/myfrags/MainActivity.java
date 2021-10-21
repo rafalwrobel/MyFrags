@@ -113,7 +113,12 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnButton
             sequence = new int[]{0,1,2,3}; // <--- Początkowa sekwencja fragmentów
             Fragment[] fragments = new Fragment[]{new Fragment1(), new Fragment2(), new Fragment3(), new Fragment4()};
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            FragmentTransaction transaction = fragmentManager.beginTransaction().setCustomAnimations(
+                    R.anim.slide_in,  // enter
+                    R.anim.fade_out,  // exit
+                    R.anim.fade_in,   // popEnter
+                    R.anim.slide_out  // popExit
+            );
             for (int i = 0; i < 4; i++) {
                 transaction.add(frames[i], fragments[i]);
             }
